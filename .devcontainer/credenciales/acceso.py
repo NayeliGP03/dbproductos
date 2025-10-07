@@ -32,9 +32,10 @@ def obtener_datos_usuario(username, password):
         cursor = conn.cursor()
         # Verificar si el usuario y contraseña existen en la tabla credenciales
         query = """
-        SELECT u.id_usuario, u.nombre, u.correo, u.telefono, u.fecha_nacimiento 
+        SELECT u.id_usuario, u.nombre, u.correo, u.telefono, u.fecha_nacimiento, p.puesto  
         FROM credenciales c
         JOIN usuarios u ON c.id_usuario = u.id_usuario
+        LEFT JOIN puestos p ON u.id_puesto = p.id_puesto  
         WHERE c.username = %s AND c.password_hash = %s;
         """
         cursor.execute(query, (username, password))
@@ -46,6 +47,7 @@ def obtener_datos_usuario(username, password):
             print(f"Correo: {usuario[2]}")
             print(f"Teléfono: {usuario[3]}")
             print(f"Fecha de Nacimiento: {usuario[4]}")
+            print(f"Puesto: {usuario[5] if usuario[5] else 'No Asignado'}")
         else:
             print("\nUsuario o contraseña incorrectos.")
         cursor.close()

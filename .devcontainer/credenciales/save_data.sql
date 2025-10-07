@@ -48,3 +48,60 @@ VALUES
 
 select * from usuarios;
 select * from credenciales;
+
+INSERT INTO puestos (id_puesto, puesto)
+VALUES
+(1, 'Gerente de Innovación y Estrategia Digital'),
+(2, 'Analista Senior de Datos Cuantitativos'),
+(3, 'Desarrollador Full Stack - Especialista en Node.js'),
+(4, 'Diseñador de Experiencia de Usuario (UX) Senior'),
+(5, 'Especialista en Marketing de Contenidos y SEO'),
+(6, 'Coordinador de Logística y Cadena de Suministro'),
+(7, 'Ingeniero de Cloud Computing (AWS/Azure)'),
+(8, 'Técnico de Soporte de TI Nivel III'),
+(9, 'Consultor de Ciberseguridad y Riesgos'),
+(10, 'Director de Recursos Humanos y Talento'),
+(11, 'Contador General Bilingüe'),
+(12, 'Representante de Ventas B2B - Sector Tecnológico'),
+(13, 'Jefe de Operaciones de Manufactura Liviana'),
+(14, 'Asistente Ejecutivo de Alta Dirección'),
+(15, 'Especialista en Inversiones y Mercados Financieros'),
+(16, 'Editor de Video y Animación 3D'),
+(17, 'Recepcionista Administrativo y Manejo de Agenda'),
+(18, 'Investigador de Bioquímica y Desarrollo de Productos'),
+(19, 'Arquitecto de Soluciones Empresariales'),
+(20, 'Curador de Arte Moderno y Galería'),
+(21, 'Instructor de Fitness Certificado'),
+(22, 'Técnico en Reparación de Equipos Médicos');
+
+select * from puestos;
+
+UPDATE usuarios
+SET id_puesto = T.puesto_id
+FROM (VALUES
+(1, 1),   
+(2, 2),   
+(3, 3),   
+(4, 4),   
+(5, 5),  
+(6, 6),   
+(7, 7),   
+(8, 8),   
+(9, 9),  
+(10, 10), 
+(11, 11), 
+(12, 12), 
+(13, 13), 
+(14, 14), 
+(15, 15),
+(16, 16), 
+(17, 17), 
+(18, 18), 
+(19, 19), 
+(20, 20), 
+(21, 21), 
+(22, 22),
+(23, 1),
+(24, 2)  
+) AS T (user_id, puesto_id)
+WHERE usuarios.id_usuario = T.user_id;
